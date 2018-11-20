@@ -1,3 +1,24 @@
+# Customized dwm
+
+## About
+This repository and its `my-dwm` branch contains a customized version of the
+[dynamic window manager](https://dwm.suckless.org/) with the following patches
+and some personal modifications to the configuration.
+
+All the great work is done by the dwm and patch contributors!
+
+
+## Patches
+- [noborder](https://dwm.suckless.org/patches/noborder/): removes the border if
+  only one window is visible
+- [push](https://dwm.suckless.org/patches/push/), `no_master`-version: allows to
+  move the *client windows* inside the *client list*.
+- [systray](https://dwm.suckless.org/patches/systray/): shows a system tray
+  on the first monitor; also works fine with multiple monitors
+
+
+## dwm's README
+```
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
@@ -46,3 +67,4 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+```
