@@ -1412,7 +1412,7 @@ pushup(const Arg *arg) {
 		detach(sel);
 		sel->next = c;
 		for(c = selmon->clients; c->next != sel->next; c = c->next);
-			c->next = sel;
+		c->next = sel;
 	}
 	focus(sel);
 	arrange(selmon);
