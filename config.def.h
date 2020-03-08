@@ -66,11 +66,7 @@ static const char *volcmd_mute_mic[] = { "amixer", "-c", "0", "set", "Capture", 
 static const char *brightcmd_up[]    = { "xbacklight", "-inc", "5", NULL };
 static const char *brightcmd_down[]  = { "xbacklight", "-dec", "5", NULL };
 static const char *touchtoggle_cmd[] = { "touchpad-toggle", NULL };
-static const char *cmuscmd_play[]    = { "cmus-remote", "-u", NULL };
-static const char *cmuscmd_next[]    = { "cmus-remote", "-n", NULL };
-static const char *cmuscmd_prev[]    = { "cmus-remote", "-r", NULL };
 static const char *etstatuscmd[]     = { "et-status", NULL };
-static const char *thunarcmd[]       = { "thunar", NULL };
 
 static Key keys[] = {
   /* modifier                     key                       function        argument */
@@ -102,7 +98,6 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_q,                     quit,           {0} },
   { MODKEY,                       XK_q,                     spawn,          {.v = slockcmd } },
   { MODKEY|ShiftMask,             XK_t,                     spawn,          {.v = touchtoggle_cmd } },
-  { MODKEY,                       XK_e,                     spawn,          {.v = thunarcmd } },
   { MODKEY|ShiftMask,             XK_e,                     spawn,          {.v = etstatuscmd } },
   { 0,                            XF86XK_ScreenSaver,       spawn,          {.v = slockcmd } },
   { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = volcmd_up } },
@@ -111,9 +106,6 @@ static Key keys[] = {
   { 0,                            XF86XK_AudioMicMute,      spawn,          {.v = volcmd_mute_mic } },
   { 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = brightcmd_up } },
   { 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = brightcmd_down } },
-  { 0,                            XF86XK_AudioPlay,         spawn,          {.v = cmuscmd_play } },
-  { 0,                            XF86XK_AudioNext,         spawn,          {.v = cmuscmd_next } },
-  { 0,                            XF86XK_AudioPrev,         spawn,          {.v = cmuscmd_prev } },
   TAGKEYS(                        XK_1,                      0)
   TAGKEYS(                        XK_2,                      1)
   TAGKEYS(                        XK_3,                      2)
