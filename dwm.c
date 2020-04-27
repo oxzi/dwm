@@ -478,7 +478,7 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - TEXTW(stext))
+		else if (ev->x > selmon->ww - TEXTW(stext) - getsystraywidth())
 			click = ClkStatusText;
 		else
 			click = ClkWinTitle;
@@ -573,7 +573,12 @@ clientmessage(XEvent *e)
 			c->mon = selmon;
 			c->next = systray->icons;
 			systray->icons = c;
-			XGetWindowAttributes(dpy, c->win, &wa);
+			if (!XGetWindowAttributes(dpy, c->win, &wa)) {
+				/* use sane defaults */
+				wa.width = bh;
+				wa.height = bh;
+				wa.border_width = 0;
+			}
 			c->x = c->oldx = c->y = c->oldy = 0;
 			c->w = c->oldw = wa.width;
 			c->h = c->oldh = wa.height;
@@ -2262,7 +2267,7 @@ updatesystrayicongeom(Client *i, int w, int h)
 		else
 			i->w = (int) ((float)bh * ((float)w / (float)h));
 		applysizehints(i, &(i->x), &(i->y), &(i->w), &(i->h), False);
-		/* force icons into the systray dimenons if they don't want to */
+		/* force icons into the systray dimensions if they don't want to */
 		if (i->h > bh) {
 			if (i->w == i->h)
 				i->w = bh;
