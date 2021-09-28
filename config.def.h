@@ -67,10 +67,12 @@ static const char *brightcmd_up[]    = { "xbacklight", "-inc", "5", NULL };
 static const char *brightcmd_down[]  = { "xbacklight", "-dec", "5", NULL };
 static const char *touchtoggle_cmd[] = { "touchpad-toggle", NULL };
 static const char *etstatuscmd[]     = { "et-status", NULL };
+static const char *passmenucmd[]     = { "passmenu", NULL };
 
 static Key keys[] = {
   /* modifier                     key                       function        argument */
   { MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
+  { MODKEY|ShiftMask,             XK_p,                     spawn,          {.v = passmenucmd } },
   { MODKEY|ShiftMask,             XK_Return,                spawn,          {.v = termcmd } },
   { MODKEY,                       XK_b,                     togglebar,      {0} },
   { MODKEY,                       XK_j,                     focusstack,     {.i = +1 } },
