@@ -16,6 +16,11 @@ All the great work is done by the dwm and patch contributors!
 - [systray](https://dwm.suckless.org/patches/systray/): shows a system tray
   on the first monitor; also works fine with multiple monitors
 
+## Test
+```
+$ nix-shell -p xorg.{libX11,libXinerama,libXft,xinit} --run ./test.sh
+```
+
 
 ## dwm's README
 ```
