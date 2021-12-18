@@ -68,6 +68,7 @@ static const char *brightcmd_down[]  = { "xbacklight", "-dec", "5", NULL };
 static const char *touchtoggle_cmd[] = { "touchpad-toggle", NULL };
 static const char *etstatuscmd[]     = { "et-status", NULL };
 static const char *passmenucmd[]     = { "passmenu", NULL };
+static const char *dunst_close[]     = { "dunstctl", "close", NULL };
 
 static Key keys[] = {
   /* modifier                     key                       function        argument */
@@ -101,6 +102,7 @@ static Key keys[] = {
   { MODKEY,                       XK_q,                     spawn,          {.v = slockcmd } },
   { MODKEY|ShiftMask,             XK_t,                     spawn,          {.v = touchtoggle_cmd } },
   { MODKEY|ShiftMask,             XK_e,                     spawn,          {.v = etstatuscmd } },
+  { ControlMask,                  XK_space,                 spawn,          {.v = dunst_close } },
   { 0,                            XF86XK_ScreenSaver,       spawn,          {.v = slockcmd } },
   { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = volcmd_up } },
   { 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = volcmd_down } },
