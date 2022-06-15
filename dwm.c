@@ -1026,25 +1026,41 @@ getsystraywidth()
 int
 gettextprop(Window w, Atom atom, char *text, unsigned int size)
 {
+  char *text_tmp, *text_tmp_ptr;
 	char **list = NULL;
 	int n;
 	XTextProperty name;
 
 	if (!text || size == 0)
 		return 0;
-	text[0] = '\0';
+
+  text_tmp = malloc(size);
+  if (!text_tmp)
+    die("fatal: could not malloc() %u bytes\n", size);
+
+	text_tmp[0] = '\0';
 	if (!XGetTextProperty(dpy, w, &name, atom) || !name.nitems)
 		return 0;
 	if (name.encoding == XA_STRING)
-		strncpy(text, (char *)name.value, size - 1);
+		strncpy(text_tmp, (char *)name.value, size - 1);
 	else {
 		if (XmbTextPropertyToTextList(dpy, &name, &list, &n) >= Success && n > 0 && *list) {
-			strncpy(text, *list, size - 1);
+			strncpy(text_tmp, *list, size - 1);
 			XFreeStringList(list);
 		}
 	}
-	text[size - 1] = '\0';
+	text_tmp[size - 1] = '\0';
 	XFree(name.value);
+
+  for (text_tmp_ptr = text_tmp; *text_tmp_ptr != '\0'; text_tmp_ptr++) {
+    if (((int) *text_tmp_ptr) & 0x80)
+      continue;
+    *(text++) = *text_tmp_ptr;
+  }
+  *text = '\0';
+
+  free(text_tmp);
+
 	return 1;
 }
 
