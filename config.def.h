@@ -8,16 +8,17 @@ static const unsigned int borderpx       = 1;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
-static const char *fonts[]               = { "monospace:size=10" };
-static const char dmenufont[]            = "monospace:size=10";
+static const char *fonts[]               = { "Spleen 16x32:size=7:antialias=true" };
+static const char dmenufont[]            = "Spleen 16x32:size=7:antialias=true";
 static const char col_gray1[]            = "#222222";
 static const char col_gray2[]            = "#444444";
-static const char col_gray_norm[]        = "#778c7b";
-static const char col_gray_sel[]         = "#bbbbbb";
+static const char col_gray3[]            = "#91692e";
+static const char col_gray_norm[]        = "#daba8b";
+static const char col_gray_sel[]         = "#cbaa53";
 static const char *colors[][3]           = {
   /*               fg             bg         border      */
   [SchemeNorm] = { col_gray_norm, col_gray1, col_gray2 },
-  [SchemeSel]  = { col_gray_sel,  col_gray1, col_gray2 },
+  [SchemeSel]  = { col_gray_sel,  col_gray1, col_gray3 },
 };
 
 
