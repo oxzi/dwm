@@ -13,8 +13,6 @@ All the great work is done by the dwm and patch contributors!
   only one window is visible
 - [push](https://dwm.suckless.org/patches/push/), `no_master`-version: allows to
   move the *client windows* inside the *client list*.
-- [systray](https://dwm.suckless.org/patches/systray/): shows a system tray
-  on the first monitor; also works fine with multiple monitors
 
 ## Test
 ```
