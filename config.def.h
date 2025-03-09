@@ -8,7 +8,7 @@ static const unsigned int borderpx       = 1;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
-static const char *fonts[]               = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" };
+static const char *fonts[]               = { "monospace:size=10" };
 static const char dmenufont[]            = "monospace:size=10";
 static const char col_gray1[]            = "#222222";
 static const char col_gray2[]            = "#444444";
@@ -53,15 +53,10 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]        = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray_norm , "-sb", col_gray1 , "-sf", col_gray_sel, NULL };
-static const char *termcmd[]         = { "st", NULL };
-static const char *slockcmd[]        = { "slock", NULL };
-static const char *volcmd_up[]       = { "amixer", "set", "Master", "5%+", "unmute", NULL };
-static const char *volcmd_down[]     = { "amixer", "set", "Master", "5%-", "unmute", NULL };
-static const char *volcmd_mute[]     = { "amixer", "set", "Master", "toggle", NULL };
-static const char *volcmd_mute_mic[] = { "amixer", "-c", "0", "set", "Capture", "toggle", NULL };
-static const char *brightcmd_up[]    = { "xbacklight", "-inc", "5", NULL };
-static const char *brightcmd_down[]  = { "xbacklight", "-dec", "5", NULL };
-static const char *touchtoggle_cmd[] = { "touchpad-toggle", NULL };
+static const char *termcmd[]         = { "xterm", NULL };
+static const char *slockcmd[]        = { "xlock", NULL };
+static const char *brightcmd_up[]    = { "xbacklight", "-inc", "5", "-steps", "1", NULL };
+static const char *brightcmd_down[]  = { "xbacklight", "-dec", "5", "-steps", "1", NULL };
 static const char *etstatuscmd[]     = { "et-status", NULL };
 static const char *passmenucmd[]     = { "passmenu", NULL };
 static const char *dunst_close[]     = { "dunstctl", "close", NULL };
@@ -96,14 +91,9 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_period,                tagmon,         {.i = +1 } },
   { MODKEY|ShiftMask,             XK_q,                     quit,           {0} },
   { MODKEY,                       XK_q,                     spawn,          {.v = slockcmd } },
-  { MODKEY|ShiftMask,             XK_t,                     spawn,          {.v = touchtoggle_cmd } },
   { MODKEY|ShiftMask,             XK_e,                     spawn,          {.v = etstatuscmd } },
   { ControlMask,                  XK_space,                 spawn,          {.v = dunst_close } },
   { 0,                            XF86XK_ScreenSaver,       spawn,          {.v = slockcmd } },
-  { 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = volcmd_up } },
-  { 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = volcmd_down } },
-  { 0,                            XF86XK_AudioMute,         spawn,          {.v = volcmd_mute } },
-  { 0,                            XF86XK_AudioMicMute,      spawn,          {.v = volcmd_mute_mic } },
   { 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = brightcmd_up } },
   { 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = brightcmd_down } },
   TAGKEYS(                        XK_1,                      0)
